@@ -150,8 +150,8 @@ const Table1 = () => {
             ))}
           </Grid>
         ) : (
-          <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 800 }} aria-label="simple table">
+          <TableContainer component={Box}>
+            <Table sx={{ minWidth: 650 }} aria-label="simple table">
               <TableHead>
                 <TableRow>
                   <TableCell
@@ -288,11 +288,7 @@ const Table1 = () => {
                     key={index}
                     sx={{ "&:last-child td, &:last-child th": { border: 1 } }}
                   >
-                    <TableCell
-                      component="th"
-                      scope="row"
-                      sx={{ border: "1px solid black" }}
-                    >
+                    <TableCell sx={{ border: "1px solid black" }}>
                       {row.areaCode}
                     </TableCell>
                     <TableCell
@@ -339,7 +335,7 @@ const Table1 = () => {
                   <TableCell
                     colSpan={4}
                     sx={{
-                      width: 500,
+                      width: 425,
                       border: "2px solid black",
                       fontWeight: "bold",
                       color: "black",
@@ -386,7 +382,7 @@ const Table1 = () => {
                   <TableCell
                     colSpan={4}
                     sx={{
-                      width: 500,
+                      width: 425,
                       border: "2px solid black",
                       fontWeight: "bold",
                       color: "black",
@@ -434,7 +430,7 @@ const Table1 = () => {
                   <TableCell
                     colSpan={4}
                     sx={{
-                      width: 500,
+                      width: 425,
                       border: "2px solid black",
                       fontWeight: "bold",
                       color: "black",
@@ -446,7 +442,7 @@ const Table1 = () => {
                   <TableCell
                     colSpan={3}
                     sx={{
-                      width: 75,
+                      width: 225,
                       border: "2px solid black",
                       fontWeight: "bold",
                       color: "black",

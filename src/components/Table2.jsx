@@ -58,7 +58,7 @@ const Table2 = () => {
           midterm{" "}
         </Typography>
 
-        <TableContainer component={Paper}>
+        <TableContainer component={Box}>
           <Table sx={{ minWidth: 650 }} aria-label="merged table">
             <TableHead>
               <TableRow>
@@ -76,18 +76,10 @@ const Table2 = () => {
                   key={index}
                   sx={{ "&:last-child td, &:last-child th": { border: 1 } }}
                 >
-                  <TableCell
-                    component="th"
-                    scope="row"
-                    sx={{ border: "2px solid black" }}
-                  >
+                  <TableCell sx={{ border: "2px solid black" }}>
                     {row.usage}
                   </TableCell>
-                  <TableCell
-                    component="th"
-                    scope="row"
-                    sx={{ border: "2px solid black" }}
-                  >
+                  <TableCell sx={{ border: "2px solid black" }}>
                     {row.fee}
                   </TableCell>
                 </TableRow>
