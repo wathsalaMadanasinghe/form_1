@@ -1,16 +1,5 @@
 import React from "react";
-import {
-  Container,
-  Typography,
-  Box,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-} from "@mui/material";
+import { Container, Typography, Box } from "@mui/material";
 
 const createData = (usage, fee) => {
   return { usage, fee };
@@ -57,36 +46,42 @@ const Table2 = () => {
           Fee charge policy for partial usage in case of new admission during
           midterm{" "}
         </Typography>
-
-        <TableContainer component={Box}>
-          <Table sx={{ minWidth: 650 }} aria-label="merged table">
-            <TableHead>
-              <TableRow>
-                <TableCell sx={{ border: "2px solid black" }}>
-                  PERIOD OF BUS USAGE{" "}
-                </TableCell>
-                <TableCell align="center" sx={{ border: "2px solid black" }}>
-                  FEES CHARGEABLE
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {rows.map((row, index) => (
-                <TableRow
-                  key={index}
-                  sx={{ "&:last-child td, &:last-child th": { border: 1 } }}
+        <table style={{ borderCollapse: "collapse" }}>
+          <thead>
+            <tr>
+              <th style={{ width: "50%", border: "2px solid black" }}>
+                PERIOD OF BUS USAGE
+              </th>
+              <th
+                style={{
+                  width: "50%",
+                  border: "2px solid black",
+                  textAlign: "center",
+                }}
+              >
+                FEES CHARGEABLE
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row, index) => (
+              <tr key={index}>
+                <td style={{ width: "50%", border: "2px solid black" }}>
+                  {row.usage}
+                </td>
+                <td
+                  style={{
+                    width: "50%",
+                    border: "2px solid black",
+                    textAlign: "center",
+                  }}
                 >
-                  <TableCell sx={{ border: "2px solid black" }}>
-                    {row.usage}
-                  </TableCell>
-                  <TableCell sx={{ border: "2px solid black" }}>
-                    {row.fee}
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+                  {row.fee}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </Box>
     </Container>
   );

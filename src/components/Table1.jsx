@@ -3,21 +3,9 @@ import {
   Container,
   Typography,
   Box,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-  Card,
-  CardContent,
-  Grid,
   useMediaQuery,
-  TableFooter,
-  TextField,
+  useTheme,
 } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 
 const createData = (
   areaCode,
@@ -96,6 +84,7 @@ const Table1 = () => {
             display: "flex",
             flexDirection: "row",
             justifyContent: "center",
+            alignItems: "baseline",
           }}
         >
           <Typography
@@ -113,348 +102,344 @@ const Table1 = () => {
           >
             TRANSPORT FEES FOR THE ACADEMIC YEAR{" "}
           </Typography>
-          <TextField
-            variant="standard"
-            size="small"
-            sx={{
-              mx: 1,
-              my: 1,
-
-              width: "calc(20% - 2px)",
-              "& input": {
-                fontSize: { xs: "0.6rem", md: "0.8rem ", xl: "1.2rem" }, // Adjust the font size as needed
-                textAlign: "center",
-              },
+          <input
+            type="text"
+            style={{
+              border: "none",
+              borderBottom: "2px solid",
+              margin: "8px",
+              padding: "none",
+              width: "20%",
+              fontSize: "absolute-size",
+              textAlign: "center",
+              outline: "none",
             }}
-          ></TextField>
+          />
         </Box>
 
         {isSmallScreen ? (
-          <Grid container spacing={2}>
+          <div>
             {rows.map((row, index) => (
-              <Grid item xs={12} key={index}>
-                <Card>
-                  <CardContent>
-                    <Typography variant="h6">
-                      AreaCode: {row.areaCode}
-                    </Typography>
-                    <Typography variant="body1">
-                      Emirates: {row.emirates}
-                    </Typography>
-                    <Typography variant="body1">
-                      Location: {row.location}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
+              <div key={index} style={{ marginBottom: "16px" }}>
+                <Typography variant="h6">AreaCode: {row.areaCode}</Typography>
+                <Typography variant="body1">
+                  Emirates: {row.emirates}
+                </Typography>
+                <Typography variant="body1">
+                  Location: {row.location}
+                </Typography>
+              </div>
             ))}
-          </Grid>
+          </div>
         ) : (
-          <TableContainer component={Box}>
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
-              <TableHead>
-                <TableRow>
-                  <TableCell
-                    rowSpan={2}
-                    colSpan={3}
-                    align="center"
-                    sx={{
-                      border: "1px solid black",
-                      fontWeight: "bold",
-                      color: "black",
-                      fontSize: "1rem",
-                    }}
+          <table style={{ minWidth: "650px", borderCollapse: "collapse" }}>
+            <thead>
+              <tr>
+                <th
+                  rowSpan={2}
+                  colSpan={3}
+                  align="center"
+                  style={{
+                    width: "53%",
+                    border: "1px solid black",
+                    fontWeight: "bold",
+                    color: "black",
+                    fontSize: "1rem",
+                  }}
+                >
+                  DPS – JEBEL ALI
+                </th>
+                <th
+                  colSpan={3}
+                  align="center"
+                  style={{
+                    width: "27%",
+                    border: "1px solid black",
+                    fontWeight: "bold",
+                    color: "black",
+                    fontSize: "1rem",
+                  }}
+                >
+                  TERM FEES **
+                </th>
+                <th
+                  rowSpan={3}
+                  align="center"
+                  style={{
+                    width: "10%",
+                    border: "1px solid black",
+                    fontWeight: "bold",
+                    color: "black",
+                    fontSize: "1rem",
+                  }}
+                >
+                  TOTAL{" "}
+                </th>
+              </tr>
+              <tr>
+                <th
+                  colSpan={3}
+                  align="center"
+                  style={{
+                    width: "27%",
+                    border: "1px solid black",
+                    fontWeight: "bold",
+                    color: "black",
+                    fontSize: "1rem",
+                  }}
+                >
+                  (AED)
+                </th>
+              </tr>
+              <tr>
+                <th
+                  align="center"
+                  style={{
+                    width: "3%",
+                    border: "1px solid black",
+                    fontWeight: "bold",
+                    color: "black",
+                    fontSize: "1rem",
+                  }}
+                >
+                  Area Code
+                </th>
+                <th
+                  align="center"
+                  style={{
+                    width: "15%",
+                    border: "1px solid black",
+                    fontWeight: "bold",
+                    color: "black",
+                    fontSize: "1rem",
+                  }}
+                >
+                  Emirates{" "}
+                </th>
+                <th
+                  align="center"
+                  style={{
+                    width: "45%",
+                    border: "1px solid black",
+                    fontWeight: "bold",
+                    color: "black",
+                    fontSize: "1rem",
+                  }}
+                >
+                  Location
+                </th>
+                <th
+                  align="center"
+                  style={{
+                    width: "9%",
+                    border: "1px solid black",
+                    fontWeight: "bold",
+                    color: "black",
+                    fontSize: "1rem",
+                  }}
+                >
+                  Term 1
+                </th>
+                <th
+                  align="center"
+                  style={{
+                    width: "9%",
+                    border: "1px solid black",
+                    fontWeight: "bold",
+                    color: "black",
+                    fontSize: "1rem",
+                  }}
+                >
+                  Term 2
+                </th>
+                <th
+                  align="center"
+                  style={{
+                    width: "9%",
+                    border: "1px solid black",
+                    fontWeight: "bold",
+                    color: "black",
+                    fontSize: "1rem",
+                  }}
+                >
+                  Term 3
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((row, index) => (
+                <tr key={index}>
+                  <td style={{ width: "3%", border: "1px solid black" }}>
+                    {row.areaCode}
+                  </td>
+                  <td
+                    align="justify"
+                    style={{ width: "15%", border: "1px solid black" }}
                   >
-                    DPS – JEBEL ALI
-                  </TableCell>
-                  <TableCell
-                    colSpan={3}
-                    align="center"
-                    sx={{
-                      border: "1px solid black",
-                      fontWeight: "bold",
-                      color: "black",
-                      fontSize: "1rem",
-                    }}
-                  >
-                    TERM FEES **
-                  </TableCell>
-                  <TableCell
-                    rowSpan={3}
-                    align="center"
-                    sx={{
-                      width: 50,
-                      border: "1px solid black",
-                      fontWeight: "bold",
-                      color: "black",
-                      fontSize: "1rem",
-                    }}
-                  >
-                    TOTAL{" "}
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell
-                    colSpan={3}
-                    align="center"
-                    sx={{
-                      border: "1px solid black",
-                      fontWeight: "bold",
-                      color: "black",
-                      fontSize: "1rem",
-                    }}
-                  >
-                    (AED)
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell
-                    align="center"
-                    sx={{
-                      width: 50,
-                      border: "1px solid black",
-                      fontWeight: "bold",
-                      color: "black",
-                      fontSize: "1rem",
-                    }}
-                  >
-                    Area Code
-                  </TableCell>
-                  <TableCell
-                    align="center"
-                    sx={{
-                      width: 75,
-                      border: "1px solid black",
-                      fontWeight: "bold",
-                      color: "black",
-                      fontSize: "1rem",
-                    }}
-                  >
-                    Emirates{" "}
-                  </TableCell>
-                  <TableCell
-                    align="center"
-                    sx={{
-                      width: 300,
-                      border: "1px solid black",
-                      fontWeight: "bold",
-                      color: "black",
-                      fontSize: "1rem",
-                    }}
-                  >
-                    Location
-                  </TableCell>
-                  <TableCell
-                    align="center"
-                    sx={{
-                      width: 75,
-                      border: "1px solid black",
-                      fontWeight: "bold",
-                      color: "black",
-                      fontSize: "1rem",
-                    }}
-                  >
-                    Term 1
-                  </TableCell>
-                  <TableCell
-                    align="center"
-                    sx={{
-                      width: 75,
-                      border: "1px solid black",
-                      fontWeight: "bold",
-                      color: "black",
-                      fontSize: "1rem",
-                    }}
-                  >
-                    Term 2
-                  </TableCell>
-                  <TableCell
-                    align="center"
-                    sx={{
-                      width: 75,
-                      border: "1px solid black",
-                      fontWeight: "bold",
-                      color: "black",
-                      fontSize: "1rem",
-                    }}
-                  >
-                    Term 3
-                  </TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {rows.map((row, index) => (
-                  <TableRow
-                    key={index}
-                    sx={{ "&:last-child td, &:last-child th": { border: 1 } }}
-                  >
-                    <TableCell sx={{ border: "1px solid black" }}>
-                      {row.areaCode}
-                    </TableCell>
-                    <TableCell
-                      align="justify"
-                      sx={{ border: "1px solid black" }}
-                    >
-                      {row.emirates}
-                    </TableCell>
-                    <TableCell
-                      align="justify"
-                      sx={{ border: "1px solid black" }}
-                    >
-                      {row.location}
-                    </TableCell>
-                    <TableCell
-                      align="justify"
-                      sx={{ border: "1px solid black" }}
-                    >
-                      {row.term1}
-                    </TableCell>
-                    <TableCell
-                      align="justify"
-                      sx={{ border: "1px solid black" }}
-                    >
-                      {row.term2}
-                    </TableCell>
-                    <TableCell
-                      align="justify"
-                      sx={{ border: "1px solid black" }}
-                    >
-                      {row.term3}
-                    </TableCell>
-                    <TableCell
-                      align="justify"
-                      sx={{ border: "1px solid black" }}
-                    >
-                      {row.total}
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-              <TableFooter>
-                <TableRow>
-                  <TableCell
-                    colSpan={4}
-                    sx={{
-                      width: 425,
-                      border: "2px solid black",
-                      fontWeight: "bold",
-                      color: "black",
-                      fontSize: "1rem",
-                    }}
-                  >
-                    PAYMENT DUE DATES FOR REGULAR STUDENTS{" "}
-                  </TableCell>
-                  <TableCell
-                    sx={{
-                      width: 75,
-                      border: "2px solid black",
-                      fontWeight: "bold",
-                      color: "black",
-                      fontSize: "1rem",
-                    }}
-                  >
-                    15th Mar{" "}
-                  </TableCell>
-                  <TableCell
-                    sx={{
-                      width: 75,
-                      border: "2px solid black",
-                      fontWeight: "bold",
-                      color: "black",
-                      fontSize: "1rem",
-                    }}
-                  >
-                    15th Aug{" "}
-                  </TableCell>
-                  <TableCell
-                    sx={{
-                      width: 75,
-                      border: "2px solid black",
-                      fontWeight: "bold",
-                      color: "black",
-                      fontSize: "1rem",
-                    }}
-                  >
-                    15th Nov{" "}
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell
-                    colSpan={4}
-                    sx={{
-                      width: 425,
-                      border: "2px solid black",
-                      fontWeight: "bold",
-                      color: "black",
-                      fontSize: "1rem",
-                    }}
-                  >
-                    LAST DATE OF PAYMENT{" "}
-                  </TableCell>
-                  <TableCell
-                    sx={{
-                      width: 75,
-                      border: "2px solid black",
-                      fontWeight: "bold",
-                      color: "black",
-                      fontSize: "1rem",
-                    }}
-                  >
-                    25th Mar{" "}
-                  </TableCell>
-                  <TableCell
-                    sx={{
-                      width: 75,
-                      border: "2px solid black",
-                      fontWeight: "bold",
-                      color: "black",
-                      fontSize: "1rem",
-                    }}
-                  >
-                    25th Aug{" "}
-                  </TableCell>
-                  <TableCell
-                    sx={{
-                      width: 75,
-                      border: "2px solid black",
-                      fontWeight: "bold",
-                      color: "black",
-                      fontSize: "1rem",
-                    }}
-                  >
-                    25th Nov{" "}
-                  </TableCell>
-                </TableRow>
+                    {row.emirates}
+                  </td>
+                  <td
+                    align="justify"
+                    style={{
+                      padding: "10px",
 
-                <TableRow>
-                  <TableCell
-                    colSpan={4}
-                    sx={{
-                      width: 425,
-                      border: "2px solid black",
-                      fontWeight: "bold",
-                      color: "black",
-                      fontSize: "1rem",
+                      width: "45%",
+                      border: "1px solid black",
                     }}
                   >
-                    PAYMENT DUE DATES FOR NEW ADMISSIONS
-                  </TableCell>
-                  <TableCell
-                    colSpan={3}
-                    sx={{
-                      width: 225,
-                      border: "2px solid black",
-                      fontWeight: "bold",
-                      color: "black",
-                      fontSize: "1rem",
-                    }}
+                    {row.location}
+                  </td>
+                  <td
+                    align="justify"
+                    style={{ width: "9%", border: "1px solid black" }}
                   >
-                    IMMEDIATELY UPON ADMISSION{" "}
-                  </TableCell>
-                </TableRow>
-              </TableFooter>
-            </Table>
-          </TableContainer>
+                    {row.term1}
+                  </td>
+                  <td
+                    align="justify"
+                    style={{ width: "9%", border: "1px solid black" }}
+                  >
+                    {row.term2}
+                  </td>
+                  <td
+                    align="justify"
+                    style={{ width: "9%", border: "1px solid black" }}
+                  >
+                    {row.term3}
+                  </td>
+                  <td
+                    align="justify"
+                    style={{ width: "10%", border: "1px solid black" }}
+                  >
+                    {row.total}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+            <tfoot>
+              <tr>
+                <td
+                  colSpan={4}
+                  style={{
+                    width: 425,
+                    border: "2px solid black",
+                    fontWeight: "bold",
+                    color: "black",
+                    fontSize: "1rem",
+                  }}
+                >
+                  PAYMENT DUE DATES FOR REGULAR STUDENTS{" "}
+                </td>
+                <td
+                  style={{
+                    width: 75,
+                    border: "2px solid black",
+                    fontWeight: "bold",
+                    color: "black",
+                    fontSize: "1rem",
+                  }}
+                >
+                  15th Mar{" "}
+                </td>
+                <td
+                  style={{
+                    width: 75,
+                    border: "2px solid black",
+                    fontWeight: "bold",
+                    color: "black",
+                    fontSize: "1rem",
+                  }}
+                >
+                  15th Aug{" "}
+                </td>
+                <td
+                  style={{
+                    width: 75,
+                    border: "2px solid black",
+                    fontWeight: "bold",
+                    color: "black",
+                    fontSize: "1rem",
+                  }}
+                >
+                  15th Nov{" "}
+                </td>
+              </tr>
+              <tr>
+                <td
+                  colSpan={4}
+                  style={{
+                    width: 425,
+                    border: "2px solid black",
+                    fontWeight: "bold",
+                    color: "black",
+                    fontSize: "1rem",
+                  }}
+                >
+                  LAST DATE OF PAYMENT{" "}
+                </td>
+                <td
+                  style={{
+                    width: 75,
+                    border: "2px solid black",
+                    fontWeight: "bold",
+                    color: "black",
+                    fontSize: "1rem",
+                  }}
+                >
+                  25th Mar{" "}
+                </td>
+                <td
+                  style={{
+                    width: 75,
+                    border: "2px solid black",
+                    fontWeight: "bold",
+                    color: "black",
+                    fontSize: "1rem",
+                  }}
+                >
+                  25th Aug{" "}
+                </td>
+                <td
+                  style={{
+                    width: 75,
+                    border: "2px solid black",
+                    fontWeight: "bold",
+                    color: "black",
+                    fontSize: "1rem",
+                  }}
+                >
+                  25th Nov{" "}
+                </td>
+              </tr>
+
+              <tr>
+                <td
+                  colSpan={4}
+                  style={{
+                    width: 425,
+                    border: "2px solid black",
+                    fontWeight: "bold",
+                    color: "black",
+                    fontSize: "1rem",
+                  }}
+                >
+                  PAYMENT DUE DATES FOR NEW ADMISSIONS
+                </td>
+                <td
+                  colSpan={3}
+                  style={{
+                    width: 225,
+                    border: "2px solid black",
+                    fontWeight: "bold",
+                    color: "black",
+                    fontSize: "1rem",
+                  }}
+                >
+                  IMMEDIATELY UPON ADMISSION{" "}
+                </td>
+              </tr>
+            </tfoot>
+          </table>
         )}
 
         <Typography
